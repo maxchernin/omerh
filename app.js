@@ -4,42 +4,6 @@ let currentTheme = 'light';
 let filteredTools = [];
 let selectedCategory = 'all';
 
-// Tools data array
-const tools = [
-    // AI Chat & Assistants
-    {
-        name: "ChatGPT",
-        description: {
-            en: "Advanced AI language model for conversation and assistance",
-            he: "מודל שפה מתקדם לשיחה וסיוע"
-        },
-        url: "https://chat.openai.com",
-        icon: "https://chat.openai.com/favicon.ico",
-        category: "AI Chat",
-        tags: ["chat", "GPT", "assistant"]
-    },
-    {
-        name: "Claude",
-        description: {
-            en: "AI assistant from Anthropic for analysis and complex tasks",
-            he: "עוזר בינה מלאכותית מבית Anthropic לניתוח ומשימות מורכבות"
-        },
-        url: "https://claude.ai",
-        category: "AI Chat",
-        tags: ["chat", "analysis", "writing"]
-    },
-    {
-        name: "Bard",
-        description: {
-            en: "Google's conversational AI assistant",
-            he: "עוזר בינה מלאכותית שיחתי של גוגל"
-        },
-        url: "https://bard.google.com",
-        category: "AI Chat",
-        tags: ["chat", "google", "assistant"]
-    }
-];
-
 // Initialize the application when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Application starting...'); // Debug log to verify initialization
@@ -267,12 +231,11 @@ function showToast(message) {
     toast.textContent = message;
     
     const container = document.getElementById('toastContainer');
-    if (container) {
-        container.appendChild(toast);
-        
-        // Remove toast after 3 seconds
-        setTimeout(() => {
-            toast.remove();
-        }, 3000);
-    }
+    container.appendChild(toast);
+    
+    // Remove toast after animation
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => container.removeChild(toast), 500);
+    }, 3000);
 }
