@@ -6,16 +6,37 @@ let selectedCategory = 'all';
 
 // Tools data array
 const tools = [
+    // AI Chat & Assistants
     {
-        name: "Default Tool",
-        category: "General",
+        name: "ChatGPT",
         description: {
-            en: "A sample tool description",
-            he: "תיאור כלי לדוגמה"
+            en: "Advanced AI language model for conversation and assistance",
+            he: "מודל שפה מתקדם לשיחה וסיוע"
         },
-        icon: "",
-        url: "#",
-        tags: ["sample", "tool"]
+        url: "https://chat.openai.com",
+        icon: "https://chat.openai.com/favicon.ico",
+        category: "AI Chat",
+        tags: ["chat", "GPT", "assistant"]
+    },
+    {
+        name: "Claude",
+        description: {
+            en: "AI assistant from Anthropic for analysis and complex tasks",
+            he: "עוזר בינה מלאכותית מבית Anthropic לניתוח ומשימות מורכבות"
+        },
+        url: "https://claude.ai",
+        category: "AI Chat",
+        tags: ["chat", "analysis", "writing"]
+    },
+    {
+        name: "Bard",
+        description: {
+            en: "Google's conversational AI assistant",
+            he: "עוזר בינה מלאכותית שיחתי של גוגל"
+        },
+        url: "https://bard.google.com",
+        category: "AI Chat",
+        tags: ["chat", "google", "assistant"]
     }
 ];
 
@@ -158,7 +179,17 @@ function handleSearch(event) {
 // Render the tools grid
 function renderTools(toolsToRender) {
     const toolGrid = document.getElementById('toolGrid');
+    if (!toolGrid) {
+        console.error('Tool grid element not found!');
+        return;
+    }
+    
     toolGrid.innerHTML = '';
+    
+    if (!toolsToRender || toolsToRender.length === 0) {
+        toolGrid.innerHTML = '<div class="no-results">No tools found</div>';
+        return;
+    }
     
     toolsToRender.forEach(tool => {
         const card = document.createElement('div');
