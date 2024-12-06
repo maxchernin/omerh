@@ -1,3 +1,28 @@
+/* Theme Variables */
+:root {
+    --primary-color: #2A2A72;
+    --secondary-color: #009FFD;
+    --accent-color: #FF6B6B;
+    --background-color: #F8F9FA;
+    --text-color: #333;
+    --card-background: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-color: #E9ECEF;
+    --hover-color: #F1F3F5;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-color: #4A4A92;
+    --background-color: #1A1A1A;
+    --text-color: #ffffff;
+    --card-background: #2D2D2D;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --border-color: #404040;
+    --hover-color: #363636;
+}
+
+/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,23 +30,364 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
-    background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.container {
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.controls {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-h1 {
-    color: #333;
+/* Search Bar */
+.search-bar {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    min-width: 300px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons */
+.toggle-btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+/* Add this to the beginning of your :root variables */
+:root {
+    /* Original variables remain... */
+
+    /* Category Colors */
+    --ai-chat-color: #4A90E2;        /* Blue */
+    --development-color: #50B83C;     /* Green */
+    --design-color: #9C6ADE;         /* Purple */
+    --business-color: #47C1BF;       /* Teal */
+    --crypto-color: #F49342;         /* Orange */
+    --research-color: #5C6AC4;       /* Indigo */
+    --utilities-color: #DE751F;      /* Brown */
+    --defi-color: #EEC200;          /* Yellow */
+    --news-color: #ED6347;          /* Red */
+    --learning-color: #8E9D6D;      /* Sage */
+}
+
+/* Add this to your dark theme variables */
+[data-theme="dark"] {
+    /* Original dark theme variables remain... */
+
+    /* Category Colors - slightly adjusted for dark theme */
+    --ai-chat-color: #5B9FE2;
+    --development-color: #61C84D;
+    --design-color: #AD7BEE;
+    --business-color: #58D2D0;
+    --crypto-color: #FFA453;
+    --research-color: #6D7BD5;
+    --utilities-color: #EF8630;
+    --defi-color: #FFD311;
+    --news-color: #FE7458;
+    --learning-color: #9FAE7E;
+}
+/* Add this to your CSS file */
+.tool-card {
+    /* Existing styles remain... */
+    border-top: 4px solid var(--border-color); /* Default border */
+}
+
+/* Category-specific styling */
+.tool-card[data-category="AI Chat"] {
+    border-top-color: var(--ai-chat-color);
+}
+
+.tool-card[data-category="Development"],
+.tool-card[data-category="Blockchain Dev"] {
+    border-top-color: var(--development-color);
+}
+
+.tool-card[data-category="Design"],
+.tool-card[data-category="AI Design"] {
+    border-top-color: var(--design-color);
+}
+
+.tool-card[data-category="Business"] {
+    border-top-color: var(--business-color);
+}
+
+.tool-card[data-category="Crypto"],
+.tool-card[data-category="Crypto Analytics"],
+.tool-card[data-category="Crypto Exchange"],
+.tool-card[data-category="Crypto Wallet"] {
+    border-top-color: var(--crypto-color);
+}
+
+.tool-card[data-category="Research"],
+.tool-card[data-category="Crypto Research"] {
+    border-top-color: var(--research-color);
+}
+
+.tool-card[data-category="Utilities"] {
+    border-top-color: var(--utilities-color);
+}
+
+.tool-card[data-category="DeFi"],
+.tool-card[data-category="DeFi Education"] {
+    border-top-color: var(--defi-color);
+}
+
+.tool-card[data-category="Crypto News"],
+.tool-card[data-category="News"] {
+    border-top-color: var(--news-color);
+}
+
+.tool-card[data-category="Learning"],
+.tool-card[data-category="AI Learning"],
+.tool-card[data-category="Crypto Education"] {
+    border-top-color: var(--learning-color);
+}
+
+/* Add a small category label */
+.category-label {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    color: white;
+}
+.toggle-btn:hover {
+    background: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+.toggle-btn.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Container and Grid */
+.container {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Tool Cards */
+.tool-card {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
-p {
-    color: #666;
+.tool-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.tool-description {
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+/* Tags */
+.tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+/* Category Filter */
+.category-filter {
+    display: flex;
+    gap: 0.8rem;
+    padding: 1rem;
+    overflow-x: auto;
+    background: var(--card-background);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    scrollbar-width: thin;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+/* Visit Button */
+.visit-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s;
+}
+
+.visit-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--background-color);
+    border-top: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.toast {
+    background: var(--card-background);
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    .search-input {
+        text-align: right;
+    }
+    
+    .tool-header {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .search-bar {
+        width: 100%;
+    }
+    
+    .tool-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-filter {
+        padding: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header, .category-filter {
+        display: none;
+    }
+    
+    .tool-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
 }
